@@ -31,7 +31,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
+        dataBinding true
     }
 }
 
@@ -47,5 +47,4 @@ dependencies {
 
     implementation project(':Dialog')
 
-    implementation 'com.github.carnot-technologies.Cointech-Sdk-Android:customuicomponent:1.9.5'
 }

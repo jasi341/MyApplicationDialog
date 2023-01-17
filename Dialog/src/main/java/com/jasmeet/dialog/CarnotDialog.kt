@@ -2,62 +2,57 @@ package com.jasmeet.dialog
 
 import android.app.Activity
 import android.app.Dialog
-import android.content.DialogInterface
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RelativeLayout
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import com.jasmeet.dialog.databinding.CarnotDialogBinding
 
 
 class CarnotDialog(
-    context: Activity,
-    layout :Int,
-    DialogTitle: String,
-    PositiveButtonText:String,
-    PositiveBtnClick: DialogInterface.OnClickListener,
-    NegativeBtnText:String,
-    NegativeBtnClick: DialogInterface.OnClickListener)
-    : Dialog(context) {
+    private val context: Activity,
+) {
+    private val dialog: Dialog = Dialog(context)
+    private var binding: CarnotDialogBinding = DataBindingUtil.inflate(
+        LayoutInflater.from(context),
+        R.layout.carnot_dialog,
+        null,
+        false
+    )
 
     init {
-        val dialog = Dialog(context)
-
-        dialog.setContentView(R.layout.carnot_dialog)
-
-
-        val dialogTitle = dialog.findViewById<TextView>(R.id.dialogTitle)
-        dialogTitle.text = DialogTitle
+        dialog.setContentView(binding.root)
+        dialog.setCancelable(false)
+    }
 
 
-        dialog.setTitle(DialogTitle)
-
-        val relativeLayout = dialog.findViewById<RelativeLayout>(R.id.container)
-
-        val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(layout,null)
-
-        val inflatedLayout = inflater.inflate(layout,view as ViewGroup,false)
-        relativeLayout.addView(inflatedLayout)
-
-
-        val positiveButton =dialog.findViewById<Button>(R.id.PositiveButton)
-
-        positiveButton.text = PositiveButtonText
-
-        positiveButton.setOnClickListener {
-            PositiveBtnClick.onClick(dialog,1)
-        }
-
-        val negativeButton = dialog.findViewById<Button>(R.id.NegativeButton)
-
-        negativeButton.text = NegativeBtnText
-
-        negativeButton.setOnClickListener {
-            NegativeBtnClick.onClick(dialog,1)
-        }
-
+    fun showDialog() =
         dialog.show()
 
+    fun closeDialog() =
+        dialog.dismiss()
+
+    fun setTitle(title: String) {
+        binding.dialogTitle.text = title
+    }
+
+    fun setContainer(layout: View, layoutId: Int) {
+        val inflater = LayoutInflater.from(context)
+        val inflatedLayout = inflater.inflate(layoutId, layout as ViewGroup, false)
+        binding.containerView.addView(inflatedLayout)
+    }
+
+    fun setPositiveBtn(title: String, clickListener: View.OnClickListener) {
+        with(binding.negativeBtn) {
+            text = title
+            setOnClickListener(clickListener)
+        }
+    }
+
+    fun setNegativeBtn(title: String, clickListener: View.OnClickListener) {
+        with(binding.negativeBtn) {
+            text = title
+            setOnClickListener(clickListener)
+        }
     }
 }
