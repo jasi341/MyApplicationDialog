@@ -37,10 +37,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:drawableStart="@drawable/close"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
                     android:text="Close"
                     android:textColor="#7B7B7B"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    app:drawableEndCompat="@drawable/close" />
 
             </RelativeLayout>
 
@@ -55,23 +57,24 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/positive_btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#000000"
-                    android:textSize="14sp"
-                    android:layout_margin="5dp"/>
+                    android:text="hello"
+                    android:layout_margin="5dp"
+                    app:backgroundTint="@null" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/negative_btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp"
-                    android:layout_margin="5dp"/>
+                    android:layout_margin="5dp"
+                    android:text="hello"
+                    app:backgroundTint="@null"
+                    />
 
             </LinearLayout>
         </LinearLayout>

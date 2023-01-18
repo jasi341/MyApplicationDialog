@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             }
             carnotDialog.setNegativeBtn("Cancel") {
                 Toast.makeText(this, "This is Working -", Toast.LENGTH_SHORT).show()
+                carnotDialog.closeDialog()
             }
             carnotDialog.showDialog()
         }

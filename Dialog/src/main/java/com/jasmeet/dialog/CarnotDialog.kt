@@ -23,8 +23,9 @@ class CarnotDialog(
     init {
         dialog.setContentView(binding.root)
         dialog.setCancelable(false)
+        closeBtn()
+        backGround()
     }
-
 
     fun showDialog() =
         dialog.show()
@@ -43,7 +44,7 @@ class CarnotDialog(
     }
 
     fun setPositiveBtn(title: String, clickListener: View.OnClickListener) {
-        with(binding.negativeBtn) {
+        with(binding.positiveBtn) {
             text = title
             setOnClickListener(clickListener)
         }
@@ -55,4 +56,14 @@ class CarnotDialog(
             setOnClickListener(clickListener)
         }
     }
+
+    private fun closeBtn(){
+        binding.closeButton.setOnClickListener {
+            closeDialog()
+        }
+    }
+    private fun backGround(){
+        dialog.window!!.setBackgroundDrawableResource(R.drawable.rounded_back)
+    }
+
 }
