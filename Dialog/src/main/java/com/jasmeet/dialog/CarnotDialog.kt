@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 
 
 class CarnotDialog(
@@ -63,14 +64,16 @@ class CarnotDialog(
         val close = dialog.findViewById<TextView>(R.id.closeButton)
 
         close.setOnClickListener {
+            Toast.makeText(context,"Close Button Pressed",Toast.LENGTH_SHORT).show()
             dismissDialog(dialog)
         }
 
         dialog.setCanceledOnTouchOutside(false)
+        dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_rounded_background)
 
     }
 
-     fun dismissDialog(dialog: Dialog) {
+     private fun dismissDialog(dialog: Dialog) {
         dialog.dismiss()
 
     }

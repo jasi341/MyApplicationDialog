@@ -25,8 +25,10 @@ class MainActivity : AppCompatActivity() {
 
             var dialog = CarnotDialog(this, R.layout.demo_nba, "Demo Dialog", "Yes",
                 { _, _ ->
-                    Toast.makeText(this, "Yes", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Yes Button Pressed", Toast.LENGTH_SHORT).show()
                 }, "No", { dialog, _ ->
+                    //Toast
+                    Toast.makeText(this, "No Button pressed", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
                 })
         }
